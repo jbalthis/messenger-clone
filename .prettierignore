@@ -1,6 +1,0 @@
-.yarn
-*.lock
-*.d.ts
-.next
-dist
-node_modules
