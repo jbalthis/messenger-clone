@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { HiChevronLeft, HiEllipsisHorizontal } from "react-icons/hi2";
 import Avatar from "@/app/components/Avatar";
+import ProfileDrawer from './ProfileDrawer';
 
 interface HeaderProps{
   conversation: Conversation & {
@@ -28,7 +29,13 @@ const Header: React.FC<HeaderProps> = ({
   }, [conversation]);
 
   return (
-    <div
+    <>
+      <ProfileDrawer 
+        data={conversation}
+        isOpen={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      />
+      <div
       className="
         bg-white
         w-full
@@ -75,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({
       </div>
       <HiEllipsisHorizontal
         size={32}
-        onClick={() => { }}
+        onClick={() => setDrawerOpen(true)}
         className="
           text-sky-500
           cursor-pointer
@@ -83,7 +90,8 @@ const Header: React.FC<HeaderProps> = ({
           transition
         "
       />
-    </div>
+      </div>
+    </>
   )
 }
 export default Header
